@@ -1,0 +1,11 @@
+workflows:
+  native-android:
+    name: Build Android APK
+    instance_type: mac_mini_m1
+    scripts:
+      - name: Set up gradlew
+        script: chmod +x gradlew
+      - name: Build APK
+        script: ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/apk/debug/*.apk
