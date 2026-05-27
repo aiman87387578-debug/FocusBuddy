@@ -77,7 +77,7 @@ interface CompletionLogDao {
     suspend fun deleteLogsForTask(taskId: Int)
 }
 
-@Database(entities = [LongTask::class, DailyRoutine::class, CompletionLog::class], version = 1, exportSchema = false)
+@Database(entities = [LongTask::class, DailyRoutine::class, CompletionLog::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun longTaskDao(): LongTaskDao

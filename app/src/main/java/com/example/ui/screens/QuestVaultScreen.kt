@@ -420,7 +420,7 @@ fun ActiveQuestsPanel(
                         }
                         Spacer(modifier = Modifier.height(4.dp))
                         LinearProgressIndicator(
-                            progress = { progress },
+                            progress = progress,
                             modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(3.dp)),
                             color = NeonPurple,
                             trackColor = ObsidianBg

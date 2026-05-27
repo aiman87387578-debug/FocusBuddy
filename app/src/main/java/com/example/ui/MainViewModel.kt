@@ -330,7 +330,7 @@ class MainViewModel(
             // Seed a starter long task too
             val dbTasks = repository.getAllTasks().first()
             if (dbTasks.isEmpty()) {
-                repository.insertTask(
+                val activeTaskId = repository.insertTask(
                     LongTask(
                         title = "15-Min Focused Coding Sprint",
                         type = "Infinite",
@@ -340,7 +340,8 @@ class MainViewModel(
                         startDate = System.currentTimeMillis() - 86400000L * 3, // started 3 days ago
                         daysCompleted = 3
                     )
-                )
+                ).toInt()
+
                 repository.insertTask(
                     LongTask(
                         title = "Deep Morning Reading Challenge",
@@ -352,13 +353,11 @@ class MainViewModel(
                         daysCompleted = 0
                     )
                 )
-                // Log completions for seeded active task
-                val activeTask = repository.getAllTasks().first().firstOrNull { it.status == "Active" }
-                if (activeTask != null) {
-                    repository.insertCompletionLog(activeTask.id, System.currentTimeMillis() - 86400000L * 3)
-                    repository.insertCompletionLog(activeTask.id, System.currentTimeMillis() - 86400000L * 2)
-                    repository.insertCompletionLog(activeTask.id, System.currentTimeMillis() - 86400000L)
-                }
+
+                // Log completions for seeded active task directly using its generated row ID
+                repository.insertCompletionLog(activeTaskId, System.currentTimeMillis() - 86400000L * 3)
+                repository.insertCompletionLog(activeTaskId, System.currentTimeMillis() - 86400000L * 2)
+                repository.insertCompletionLog(activeTaskId, System.currentTimeMillis() - 86400000L)
             }
         }
     }

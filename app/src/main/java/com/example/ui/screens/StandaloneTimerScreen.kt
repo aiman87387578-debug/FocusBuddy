@@ -82,7 +82,7 @@ fun StandaloneTimerScreen(
             ) {
                 // Background shadow track
                 CircularProgressIndicator(
-                    progress = { 1f },
+                    progress = 1f,
                     modifier = Modifier.size(230.dp),
                     color = CharcoalCardElevated,
                     strokeWidth = 12.dp
@@ -90,7 +90,7 @@ fun StandaloneTimerScreen(
 
                 // Neon active track (animated progress)
                 CircularProgressIndicator(
-                    progress = { progress },
+                    progress = progress,
                     modifier = Modifier.size(230.dp),
                     color = if (isCompleted) DoneGreen else NeonPurple,
                     strokeWidth = 12.dp
