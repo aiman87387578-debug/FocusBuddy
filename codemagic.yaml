@@ -2,14 +2,10 @@ workflows:
   native-android:
     name: Build Android APK
     instance_type: mac_mini_m1
-    max_build_duration: 30
     scripts:
-      - name: Install Required Gradle 9.3.1
-        script: |
-          wget -q https://services.gradle.org/distributions/gradle-9.3.1-bin.zip -P /tmp
-          unzip -q /tmp/gradle-9.3.1-bin.zip -d /tmp
+      - name: Set up gradlew
+        script: chmod +x gradlew
       - name: Build APK
-        script: |
-          /tmp/gradle-9.3.1/bin/gradle assembleDebug
+        script: ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/apk/debug/*.apk
