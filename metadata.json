@@ -1,0 +1,6 @@
+{
+  "name": "ADHD Mastery",
+  "description": "A high-performance, minimalist ADHD Mastery App with a dark/neon purple aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
